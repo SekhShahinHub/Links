@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sekh Shahin Hossain | Links</title>
+<style>
+  :root{
+    --bg:#f5f5f5; --card:#fff; --text:#111; --muted:#666;
+    --border:#e5e5e5; --shadow:rgba(0,0,0,.08);
+  }
+  body.dark{
+    --bg:#111; --card:#1b1b1b; --text:#f5f5f5; --muted:#aaa;
+    --border:#333; --shadow:rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);
+    display:flex;justify-content:center;min-height:100vh;padding:32px 16px;
+    transition:background .25s,color .25s;
+  }
+  .card{
+    width:100%;max-width:560px;background:var(--card);border-radius:24px;
+    padding:42px 24px;box-shadow:0 12px 40px var(--shadow);
+    text-align:center;transition:background .25s,box-shadow .25s;
+  }
+  .theme-toggle{
+    margin:0 auto 26px;border:1px solid var(--border);background:transparent;
+    color:var(--text);border-radius:999px;padding:10px 16px;cursor:pointer;
+    font-size:14px;font-weight:600;transition:.2s;
+  }
+  .theme-toggle:hover{transform:translateY(-1px);box-shadow:0 5px 14px var(--shadow)}
+  h1{margin:0 0 8px;font-size:30px}
+  .role{margin:0 0 30px;color:var(--muted);font-size:16px}
+  .links{display:grid;gap:14px}
+  a{
+    display:block;text-decoration:none;color:var(--text);border:1px solid var(--border);
+    border-radius:14px;padding:16px;font-weight:600;transition:.2s;
+  }
+  a:hover{transform:translateY(-2px);box-shadow:0 6px 18px var(--shadow)}
+  footer{margin-top:28px;color:var(--muted);font-size:12px}
+</style>
+</head>
+<body>
+<main class="card">
+  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+    🌙 Dark Mode
+  </button>
+
+  <h1>Sekh Shahin Hossain</h1>
+  <p class="role">Web &amp; UI/UX Designer</p>
+
+  <div class="links">
+    <a href="https://github.com/SekhShahinHub/" target="_blank" rel="noopener">💻 GitHub</a>
+    <a href="https://www.behance.net/sekhshahin" target="_blank" rel="noopener">🎨 Behance</a>
+    <a href="https://vimeo.com/1221236347" target="_blank" rel="noopener">🎬 Vimeo Project</a>
+    <a href="https://www.linkedin.com/in/sekhshahin/" target="_blank" rel="noopener">💼 LinkedIn</a>
+  </div>
+
+  <footer>Portfolio &amp; professional profiles</footer>
+</main>
+
+<script>
+  const body = document.body;
+  const button = document.getElementById("themeToggle");
+
+  function updateTheme() {
+    const dark = body.classList.contains("dark");
+    button.textContent = dark ? "☀️ Light Mode" : "🌙 Dark Mode";
+  }
+
+  if (localStorage.getItem("theme") === "dark") {
+    body.classList.add("dark");
+  }
+  updateTheme();
+
+  button.addEventListener("click", () => {
+    body.classList.toggle("dark");
+    localStorage.setItem("theme", body.classList.contains("dark") ? "dark" : "light");
+    updateTheme();
+  });
+</script>
+</body>
+</html>
